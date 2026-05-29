@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +40,7 @@ public class EducationRepositoryImpl implements IEducationRepository {
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
             jdbcTemplate.update(connection -> {
-                var preparedStatement = connection.prepareStatement(sql, new String[]{"id"});
+                PreparedStatement preparedStatement = connection.prepareStatement(sql, new String[]{"id"});
 
                 preparedStatement.setString(1, education.getDegree());
                 preparedStatement.setString(2, education.getInstitution());

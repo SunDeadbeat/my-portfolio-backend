@@ -1,6 +1,7 @@
 package com.portfolio.my_portfolio_backend.service;
 
 import com.portfolio.my_portfolio_backend.model.Education;
+import com.portfolio.my_portfolio_backend.repository.IEducationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +11,30 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class EducationServiceImpl implements IEducationService{
-    private final IEducationService educationService;
+    private final IEducationRepository educationRepository;
 
     @Override
     public Education save(Education education) {
-        return educationService.save(education);
+        return educationRepository.save(education);
     }
 
     @Override
     public Optional<Education> findById(Long id) {
-        return educationService.findById(id);
+        return educationRepository.findById(id);
     }
 
     @Override
     public List<Education> findAll() {
-        return educationService.findAll();
+        return educationRepository.findAll();
     }
 
     @Override
     public void deleteById(Long id) {
-        educationService.deleteById(id);
+        educationRepository.deleteById(id);
     }
 
     @Override
     public List<Education> findByPersonalInfoId(Long id) {
-        return educationService.findByPersonalInfoId(id);
+        return educationRepository.findByPersonalInfoId(id);
     }
 }
