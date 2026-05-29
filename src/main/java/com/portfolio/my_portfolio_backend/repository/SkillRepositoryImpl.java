@@ -58,8 +58,8 @@ public class SkillRepositoryImpl implements ISkillRepository {
     }
 
     @Override
-    public Optional<Skill> findById(int id) {
-        String  sql = "select * from skill where id = ?";
+    public Optional<Skill> findById(Long id) {
+        String  sql = "SELECT * FROM skill WHERE id = ?";
 
         try {
             return Optional.ofNullable(jdbcTemplate.queryForObject(sql, skillRowMapper, id));
@@ -76,14 +76,14 @@ public class SkillRepositoryImpl implements ISkillRepository {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(Long id) {
         String sql = "DELETE FROM skill WHERE id = ?";
 
         jdbcTemplate.update(sql, id);
     }
 
     @Override
-    public List<Skill> findByPersonalInfoId(int id) {
+    public List<Skill> findByPersonalInfoId(Long id) {
         String  sql = "SELECT * FROM skill WHERE personal_info_id = ?";
 
         return jdbcTemplate.query(sql, skillRowMapper, id);

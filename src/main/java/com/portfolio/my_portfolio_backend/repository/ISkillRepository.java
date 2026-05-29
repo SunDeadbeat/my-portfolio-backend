@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface ISkillRepository {
     Skill save(Skill skill);
-    Optional<Skill> findById(int id);
+    Optional<Skill> findById(Long id);
     List<Skill> findAll();
-    void  deleteById(int id);
-    List<Skill> findByPersonalInfoId(int id);
+    void  deleteById(Long id);
+    List<Skill> findByPersonalInfoId(Long id);
 }
