@@ -1,5 +1,6 @@
 package com.portfolio.my_portfolio_backend.service;
 
+import com.portfolio.my_portfolio_backend.exception.ValidationException;
 import com.portfolio.my_portfolio_backend.model.PersonalInfo;
 import com.portfolio.my_portfolio_backend.repository.IPersonalInfoRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class PersonalInfoServiceImpl implements IPersonalInfoService {
         validator.validate(personalInfo, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return null;
+            throw new ValidationException(bindingResult);
         }
 
         return personalInfoRepository.save(personalInfo);
